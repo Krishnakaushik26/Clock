@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tempo — Clock &amp; Time Suite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="clock-app">
+    <!-- Top Navigation Tabs -->
+    <header class="app-nav">
+      <div class="brand">TEMPO<span>.</span></div>
+      <nav class="nav-tabs">
+        <button type="button" class="tab-btn active" data-tab="clockTab">Clock</button>
+        <button type="button" class="tab-btn" data-tab="stopwatchTab">Stopwatch</button>
+        <button type="button" class="tab-btn" data-tab="timerTab">Timer</button>
+      </nav>
+      <button type="button" id="formatToggle" class="format-toggle" title="Toggle 12/24 hour format">
+        24H
+      </button>
+    </header>
+
+    <!-- TAB 1: Clock & World Clocks -->
+    <section id="clockTab" class="tab-content active">
+      <div class="main-clock-card">
+        <p class="eyebrow">A MOMENT, WELL SPENT</p>
+        <div class="time-display">
+          <span id="time" class="time">00:00:00</span>
+          <span id="ampm" class="ampm-badge"></span>
+        </div>
+        <div id="date" class="date">Loading date...</div>
+      </div>
+
+      <section class="world-section">
+        <div class="section-title-row">
+          <h2>World Clocks</h2>
+          <span class="sub-label">Live Global Markets &amp; Tech Hubs</span>
+        </div>
+        <div class="zones-grid" id="zonesGrid">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </section>
+    </section>
+
+    <!-- TAB 2: Stopwatch -->
+    <section id="stopwatchTab" class="tab-content">
+      <div class="stopwatch-card">
+        <p class="eyebrow">PRECISION TIMEKEEPER</p>
+        <div id="sw" class="stopwatch-display">00:00.00</div>
+        
+        <div class="buttons-row">
+          <button type="button" id="start" class="btn btn-primary">Start</button>
+          <button type="button" id="lap" class="btn btn-secondary" disabled>Lap</button>
+          <button type="button" id="reset" class="btn btn-secondary">Reset</button>
+        </div>
+
+        <div class="laps-container">
+          <div class="laps-header">
+            <span>Lap</span>
+            <span>Split</span>
+            <span>Total Time</span>
+          </div>
+          <ol id="laps" class="laps-list"></ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: Countdown Timer -->
+    <section id="timerTab" class="tab-content">
+      <div class="timer-card">
+        <p class="eyebrow">COUNTDOWN &amp; FOCUS</p>
+        <div id="timerDisplay" class="stopwatch-display">25:00</div>
+
+        <!-- Presets -->
+        <div class="presets-row">
+          <button type="button" class="preset-btn" data-mins="1">1m Quick</button>
+          <button type="button" class="preset-btn" data-mins="5">5m Break</button>
+          <button type="button" class="preset-btn" data-mins="15">15m Rest</button>
+          <button type="button" class="preset-btn active" data-mins="25">25m Pomodoro</button>
+        </div>
+
+        <!-- Custom Inputs -->
+        <div class="timer-inputs">
+          <label>
+            <span>Minutes</span>
+            <input type="number" id="timerMins" min="0" max="99" value="25">
+          </label>
+          <span class="colon-sep">:</span>
+          <label>
+            <span>Seconds</span>
+            <input type="number" id="timerSecs" min="0" max="59" value="0">
+          </label>
+        </div>
+
+        <div class="buttons-row">
+          <button type="button" id="timerStart" class="btn btn-primary">Start</button>
+          <button type="button" id="timerReset" class="btn btn-secondary">Reset</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
